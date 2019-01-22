@@ -5,36 +5,29 @@
  *  @return {Object} an object containing the two factors used to produce
  *                   the palindromeNumber and the palindromeNumber itself.
  */
- var x = function(digits){
+module.exports = function (digits) {
   var factor_0 = 0;
   var factor_1 = 0;
   var palindromeNumber = 0;
+  var maxNum = 0;
+  var minNum = Math.pow(10, digits - 1);
 
   // do your work here
 
   for (var i = 0; i < digits; i++) {
-    factor_0 += 9 * Math.pow(10, i);
+    maxNum += 9 * Math.pow(10, i);
   }
 
-  factor_1 = factor_0;
 
-  for (var i = 1; i < factor_0; i++) {
-    for (var j = 1; j < factor_1; j++) {
-
-      if (i.toString().length > digits)
+  for (var i = minNum; i <= maxNum; i++) {
+    for (var j = minNum; j <= maxNum; j++) {
       var product = i * j;
-      product += '';
-      var reversed = "";
-      console.log(i, j, product);
-      for (var k = product.length; k >= 0; k--) {
-        reversed += product[k];
-      }
-      if (reversed === product) {
+      var productString = product.toString();
+      var reversed = productString.split('').reverse().join('');
+      if (reversed == product && product > palindromeNumber) {
         factor_0 = i;
         factor_1 = j;
-        palindromeNumber = parseInt(product);
-
-        console.log(factor_0, factor_1, palindromeNumber);
+        palindromeNumber = product;
       }
     }
   }
@@ -42,12 +35,10 @@
 
 
   return {
-    factor_0 : factor_0,
-    factor_1 : factor_1,
-    palindromeNumber : palindromeNumber
+    factor_0: factor_0,
+    factor_1: factor_1,
+    palindromeNumber: palindromeNumber
   };
 
 
 };
-
-console.log(x(2));

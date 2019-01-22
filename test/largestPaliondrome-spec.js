@@ -1,4 +1,4 @@
-/*var chai = require('chai');
+var chai = require('chai');
 var expect = chai.expect;
 var findPalindromeProduct = require("./../largestPalindromeProduct.js");
 
@@ -22,4 +22,4 @@ describe("Find The Largest Palindrome Product", function () {
     //
     //
   });
-});*/
+});
